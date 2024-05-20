@@ -4,6 +4,8 @@ return {
   config = function()
     require("telescope").setup({
       defaults = {
+        selection_caret = "󱞩 ",
+        prompt_prefix = " 🔍 ",
         path_display = {
           "filename_first",
         },
