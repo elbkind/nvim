@@ -1,1 +1,9 @@
-return { { "projekt0n/github-nvim-theme" } }
+return {
+  { "projekt0n/github-nvim-theme" },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "github_light_tritanopia",
+    },
+  },
+}
