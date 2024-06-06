@@ -42,18 +42,23 @@ local M = {
       end,
       desc = "File Browser (CWD)",
     },
-
-    {
-      "<leader>fU",
-      function()
-        require("oil").toggle_float("~/Informatica/")
-      end,
-      desc = "University Folder",
-    },
   },
   cmd = "Oil",
   opts = function(_, o)
     o.columns = default_coloumns(true)
+    o.preview = {
+      max_width = 0.9,
+      min_width = { 40, 0.4 },
+      width = nil,
+      max_height = 0.9,
+      min_height = { 5, 0.1 },
+      height = nil,
+      border = "rounded",
+      win_options = {
+        winblend = 0,
+      },
+      update_on_cursor_moved = true,
+    }
 
     o.keymaps = {
       ["?"] = "actions.show_help",
@@ -109,7 +114,7 @@ local M = {
     o.use_default_keymaps = false
     o.silence_scp_warning = true -- disable scp warn to use oil-ssh since I'm using a remap
     o.view_options = {
-      show_hidden = false,
+      show_hidden = true,
       is_hidden_file = function(name, _)
         return vim.startswith(name, ".")
       end,
