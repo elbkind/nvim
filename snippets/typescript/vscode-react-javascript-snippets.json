@@ -1485,7 +1485,7 @@
   "beBlock": {
     "key": "beBlock",
     "prefix": "tbe",
-    "body": ["beforeEach('() => { ${1:first} })"],
+    "body": ["beforeEach(() => { ${1:first} })"],
     "description": "Testing before each",
     "scope": "typescript,typescriptreact,javascript,javascriptreact"
   },

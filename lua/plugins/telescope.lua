@@ -26,8 +26,8 @@ return {
       })
     end,
     keys = {
-      { "<leader>/", LazyVim.telescope("live_grep", { cwd = false }), desc = "Grep (CWD Dir)" },
-      { "<leader><space>", LazyVim.telescope("files", { cwd = false }), desc = "Find Files (CWD Dir)" },
+      { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
+      { "<leader><space>", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
     },
   },
 }

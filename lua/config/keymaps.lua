@@ -20,3 +20,5 @@ vim.keymap.set("n", "<F12>", dap.step_out)
 -- vim.keymap.set("n", "<leader>B", function()
 --  require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
 -- end)
+
+vim.keymap.set("n", "<leader>fz", "<cmd>Telescope find_files cwd=~/.config/wezterm<CR>", { desc = "Wezterm files" })

@@ -1,22 +1,14 @@
--------------------------------------
--- File         : oil.lua
--- Description  : oil plugin config
--- Author       : Kevin
--- Last Modified: 03 Dec 2023, 10:48
--------------------------------------
+-- modified version of some Kevin, 03 Dec 2023, 10:48. Can not find the repo...
 
-local default_coloumns = function(detailed)
-  return detailed
-      and {
-        { "permissions", highlight = "String" },
-        { "mtime", highlight = "Comment" },
-        { "size", highlight = "Type" },
-        "icon",
-      }
-    or { "icon" }
-end
+DETAILED = {
+  { "permissions", highlight = "String" },
+  { "mtime", highlight = "Comment" },
+  { "size", highlight = "Type" },
+  "icon",
+}
+SIMPLE = { "icon" }
 
-local M = {
+return {
   "stevearc/oil.nvim",
   keys = {
     {
@@ -44,9 +36,9 @@ local M = {
     },
   },
   cmd = "Oil",
-  opts = function(_, o)
-    o.columns = default_coloumns(true)
-    o.preview = {
+  opts = {
+    columns = DETAILED,
+    preview = {
       max_width = 0.9,
       min_width = { 40, 0.4 },
       width = nil,
@@ -58,9 +50,9 @@ local M = {
         winblend = 0,
       },
       update_on_cursor_moved = true,
-    }
+    },
 
-    o.keymaps = {
+    keymaps = {
       ["?"] = "actions.show_help",
       ["<CR>"] = "actions.select",
       ["<C-k>"] = "k",
@@ -103,17 +95,17 @@ local M = {
         callback = function()
           local oil = require("oil")
           local config = require("oil.config")
-          if #config.columns == #default_coloumns(false) then
-            oil.set_columns(default_coloumns(true))
+          if #config.columns == #SIMPLE then
+            oil.set_columns(DETAILED)
           else
-            oil.set_columns(default_coloumns(false))
+            oil.set_columns(SIMPLE)
           end
         end,
       },
-    }
-    o.use_default_keymaps = false
-    o.silence_scp_warning = true -- disable scp warn to use oil-ssh since I'm using a remap
-    o.view_options = {
+    },
+    use_default_keymaps = false,
+    silence_scp_warning = true, -- disable scp warn to use oil-ssh since I'm using a remap
+    view_options = {
       show_hidden = true,
       is_hidden_file = function(name, _)
         return vim.startswith(name, ".")
@@ -121,13 +113,14 @@ local M = {
       is_always_hidden = function(name, _)
         local file_to_exclude = {
           [".DS_Store"] = true,
-          ["Icon\r"] = true,
+          [".git"] = true,
+          [".."] = true,
         }
         return file_to_exclude[name]
       end,
-    }
+    },
     -- Configuration for the floating window in oil.open_float
-    o.float = {
+    float = {
       -- Padding around the floating window
       padding = 0,
       max_width = 0,
@@ -140,13 +133,13 @@ local M = {
         conf.row = (vim.o.lines - conf.height - 3)
         return conf
       end,
-    }
+    },
 
-    o.progress = {
+    progress = {
       win_options = {
         winblend = 6,
       },
-    }
+    },
     -- This are defaults for now, no need to override
     -- adapters = {
     --   ["oil://"] = "files",
@@ -156,12 +149,12 @@ local M = {
     -- HACK:
     -- https://github.com/stevearc/oil.nvim/blob/931453fc09085c09537295c991c66637869e97e1/lua/oil/config.lua#L102~110
     -- Using this to remap url-scheme from args with oil-ssh schemes
-    o.adapter_aliases = {
+    adapter_aliases = {
       ["ssh://"] = "oil-ssh://",
       ["scp://"] = "oil-ssh://",
       ["sftp://"] = "oil-ssh://",
-    }
-  end,
+    },
+  },
   init = function(p)
     if vim.fn.argc() == 1 then
       local argv = tostring(vim.fn.argv(0))
@@ -186,5 +179,3 @@ local M = {
     end
   end,
 }
-
-return M
