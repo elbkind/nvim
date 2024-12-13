@@ -27,7 +27,7 @@ return {
     end,
     keys = {
       { "<leader>/", LazyVim.pick("live_grep", { root = false }), desc = "Grep (cwd)" },
-      { "<leader><space>", LazyVim.pick("auto", { root = false }), desc = "Find Files (cwd)" },
+      { "<leader><space>", "<cmd>Telescope git_files<cr>", desc = "Find Files (git-files)" },
     },
   },
 }
