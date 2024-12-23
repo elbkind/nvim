@@ -6,13 +6,27 @@ return {
   opts = {
     bigfile = { enabled = true },
     terminal = { enabled = true },
-    -- indent = { enabled = true },
+    indent = {
+      enabled = false,
+      indent = {
+        hl = {
+          "RainbowRed",
+          "RainbowYellow",
+          "RainbowViolet",
+          "RainbowBlue",
+          "RainbowGreen",
+          "RainbowOrange",
+          "RainbowCyan",
+          "RainbowWhite",
+        },
+      },
+    },
     input = { enabled = true },
     notifier = {
       enabled = true,
       timeout = 3000,
     },
-    scroll = { enabled = true },
+    scroll = { enabled = false },
     statuscolumn = { enabled = true },
     words = { enabled = true },
     dashboard = {
