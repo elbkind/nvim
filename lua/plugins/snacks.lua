@@ -4,6 +4,13 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    picker = {
+      formatters = {
+        file = {
+          filename_first = true, -- display filename before the file path
+        },
+      },
+    },
     bigfile = { enabled = true },
     terminal = { enabled = true },
     indent = {
