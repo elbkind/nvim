@@ -24,6 +24,3 @@ for _, lsp in pairs(servers) do
     root_dir = root_dir,
   })
 end
---  lspconfig.vtsls.setup({
---    filetypes = { "mjs" },
---  })
