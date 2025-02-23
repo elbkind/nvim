@@ -2,7 +2,8 @@
 require("config.lazy")
 --require("newpaper").setup({})
 require("github-theme").setup({})
-vim.cmd("colorscheme github_dark_colorblind")
+-- vim.cmd("colorscheme github_dark_colorblind")
+vim.cmd("colorscheme github_light_high_contrast")
 
 vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
 vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
@@ -24,3 +25,76 @@ for _, lsp in pairs(servers) do
     root_dir = root_dir,
   })
 end
+
+-- require("codecompanion").setup({
+--   strategies = {
+--     chat = {
+--       adapter = "ollama",
+--     },
+--     inline = {
+--       adapter = "ollama",
+--     },
+--   },
+-- })
+--
+-- require("codecompanion").setup({
+--   adapters = {
+--     llama3 = function()
+--       return require("codecompanion.adapters").extend("ollama", {
+--         name = "llama3", -- Give this adapter a different name to differentiate it from the default ollama adapter
+--
+--         schema = {
+--           model = {
+--             default = "llama3:latest",
+--           },
+--           num_ctx = {
+--             default = 16384,
+--           },
+--           num_predict = {
+--             default = -1,
+--           },
+--         },
+--       })
+--     end,
+--   },
+-- })
+--
+-- require("codecompanion").setup({
+--   strategies = {
+--     -- Change the default chat adapter
+--     inline = {
+--       adapter = "ollama",
+--       keymaps = {
+--         accept_change = {
+--           modes = { n = "ga" },
+--           description = "Accept the suggested change",
+--         },
+--         reject_change = {
+--           modes = { n = "gr" },
+--           description = "Reject the suggested change",
+--         },
+--       },
+--     },
+--     chat = {
+--       adapter = "ollama",
+--     },
+--   },
+-- })
+-- --   adapters = {
+-- --     ollama = function()
+-- --       return require("codecompanion.adapters").extend("ollama", {
+-- --         env = {
+-- --           url = "http://darkstar:11434",
+-- --           -- api_key = "OLLAMA_API_KEY",
+-- --         },
+-- --         headers = {
+-- --           ["Content-Type"] = "application/json",
+-- --           -- ["Authorization"] = "Bearer ${api_key}",
+-- --   },
+-- --   parameters = {
+-- --     sync = true,
+-- --   },
+-- -- })
+-- --     end,
+-- --   },
+-- -- })
