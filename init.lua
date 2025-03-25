@@ -17,6 +17,7 @@ vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
 -- fzf references
 local nvim_lsp = require("lspconfig")
 local root_dir = nvim_lsp.util.root_pattern(".git")
+-- local root_dir = require("lazyvim.util").root()
 local servers = { "vtsls" }
 local lspconfig = require("lspconfig")
 
@@ -25,76 +26,3 @@ for _, lsp in pairs(servers) do
     root_dir = root_dir,
   })
 end
-
--- require("codecompanion").setup({
---   strategies = {
---     chat = {
---       adapter = "ollama",
---     },
---     inline = {
---       adapter = "ollama",
---     },
---   },
--- })
---
--- require("codecompanion").setup({
---   adapters = {
---     llama3 = function()
---       return require("codecompanion.adapters").extend("ollama", {
---         name = "llama3", -- Give this adapter a different name to differentiate it from the default ollama adapter
---
---         schema = {
---           model = {
---             default = "llama3:latest",
---           },
---           num_ctx = {
---             default = 16384,
---           },
---           num_predict = {
---             default = -1,
---           },
---         },
---       })
---     end,
---   },
--- })
---
--- require("codecompanion").setup({
---   strategies = {
---     -- Change the default chat adapter
---     inline = {
---       adapter = "ollama",
---       keymaps = {
---         accept_change = {
---           modes = { n = "ga" },
---           description = "Accept the suggested change",
---         },
---         reject_change = {
---           modes = { n = "gr" },
---           description = "Reject the suggested change",
---         },
---       },
---     },
---     chat = {
---       adapter = "ollama",
---     },
---   },
--- })
--- --   adapters = {
--- --     ollama = function()
--- --       return require("codecompanion.adapters").extend("ollama", {
--- --         env = {
--- --           url = "http://darkstar:11434",
--- --           -- api_key = "OLLAMA_API_KEY",
--- --         },
--- --         headers = {
--- --           ["Content-Type"] = "application/json",
--- --           -- ["Authorization"] = "Bearer ${api_key}",
--- --   },
--- --   parameters = {
--- --     sync = true,
--- --   },
--- -- })
--- --     end,
--- --   },
--- -- })

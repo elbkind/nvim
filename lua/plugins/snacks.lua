@@ -14,7 +14,7 @@ return {
     bigfile = { enabled = true },
     terminal = { enabled = true },
     indent = {
-      enabled = false,
+      -- enabled = false,
       indent = {
         hl = {
           "RainbowRed",
