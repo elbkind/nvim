@@ -2,8 +2,8 @@
 require("config.lazy")
 --require("newpaper").setup({})
 require("github-theme").setup({})
--- vim.cmd("colorscheme github_dark_colorblind")
-vim.cmd("colorscheme github_light_high_contrast")
+vim.cmd("colorscheme github_dark_colorblind")
+-- vim.cmd("colorscheme github_light_high_contrast")
 
 -- make git dir the root dir, fixes references with
 local servers = { "vtsls" }
