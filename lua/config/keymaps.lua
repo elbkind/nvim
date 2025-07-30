@@ -29,3 +29,8 @@ end, { desc = "tmux files" })
 vim.keymap.set("n", "<leader>fl", function()
   Snacks.explorer.reveal()
 end, { desc = "Reval in finder" })
+
+vim.keymap.set("n", "<leader>pc", function()
+  local filepath = vim.fn.expand("%")
+  vim.fn.setreg("+", filepath) -- write to clippoard
+end, { noremap = true, silent = true, desc = "Copy current buffer path to clibboard" })

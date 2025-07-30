@@ -3,5 +3,6 @@ return {
   opts = {
     vscode_rest_client_environmentvars = true,
     default_env = "pv-de-ca",
+    global_keymaps = true,
   },
 }
